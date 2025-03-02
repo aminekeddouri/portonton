@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000; /* Background color black */
+            overflow: hidden;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 150px; /* Set the default size for images */
+            height: auto;
+            object-fit: contain;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+
+        /* When the image is clicked, make it fill the screen */
+        .image-container img.active {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: contain; /* Ensure image fits without distorting */
+            z-index: 10;
+            cursor: zoom-out; /* Change cursor to show it can be closed */
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Image Gallery -->
+    <div class="image-container" id="image-container">
+        <!-- Images will be dynamically added here -->
+    </div>
+
+    <script>
+        const imageDir = "./PHOTOS/"; // Path to images
+        const totalImages = 11; // Total number of images (1 to 11)
+        const imageContainer = document.getElementById('image-container');
+
+        // Load all images dynamically
+        for (let i = 1; i <= totalImages; i++) {
+            const imgPath = `${imageDir}${i}.png`; // Update based on your images
+            const imgElement = document.createElement('img');
+            imgElement.src = imgPath;
+            imgElement.alt = `Image ${i}`;
+            imgElement.onload = () => {
+                imageContainer.appendChild(imgElement);
+            };
+            imgElement.onerror = () => {
+                console.error(`Failed to load image: ${imgPath}`);
+            };
+
+            // Add click event to enlarge the image
+            imgElement.addEventListener('click', () => {
+                // Toggle the 'active' class to enlarge and fill the screen
+                imgElement.classList.toggle('active');
+
+                // When image is enlarged, clicking again should close it
+                if (imgElement.classList.contains('active')) {
+                    // Close other images if open
+                    const otherImages = document.querySelectorAll('.image-container img');
+                    otherImages.forEach(image => {
+                        if (image !== imgElement) {
+                            image.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

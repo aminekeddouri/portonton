@@ -8,10 +8,11 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Roboto', sans-serif;
+            background-color: grey;
             min-height: 200vh;
             display: flex;
             flex-direction: column;
-            background-color: grey;
+            align-items: center;
         }
 
         /* Video Background */
@@ -25,6 +26,7 @@
             z-index: -1;
         }
 
+        /* Scroll Indicator */
         #scroll-indicator {
             position: fixed;
             top: 0;
@@ -36,36 +38,43 @@
             transition: width 0.2s;
         }
 
+        /* Title */
         .title-container {
             position: fixed;
-            top: 50px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
             transition: opacity 0.5s;
+            text-align: center;
+            width: 100%;
         }
         .title-container b {
-            font-size: 2.3rem;
+            font-size: clamp(1.5rem, 5vw, 2.3rem);
             font-weight: 600;
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 3px;
         }
 
+        /* Content Section */
         .content {
-            margin-top: 150px;
+            margin-top: 120px;
             display: flex;
             justify-content: center;
-            gap: 50px;
+            gap: 20px;
+            flex-wrap: wrap;
+            width: 90%;
         }
 
         .rectangle {
-            width: 360px;
-            height: 270px;
+            width: 100%;
+            max-width: 360px;
+            height: auto;
             border-radius: 15px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 12px 24px rgba(164, 62, 62, 0.2);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
@@ -76,47 +85,49 @@
         }
 
         .rectangle:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3);
         }
 
         .overlay {
             position: absolute;
-            top: -100%;
+            top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+            background: rgba(0, 0, 0, 0.5);
             opacity: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: top 0.5s, opacity 0.3s;
+            transition: opacity 0.3s;
         }
 
         .rectangle:hover .overlay {
-            top: 0;
             opacity: 1;
         }
 
         .overlay span {
             color: white;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: bold;
             text-transform: uppercase;
+            text-align: center;
         }
 
+        /* Circle Icons */
         .circle-container {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 20px;
+            gap: 10px;
             margin-top: 30px;
+            flex-wrap: wrap;
+            width: 90%;
         }
 
         .circle {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(5px);
@@ -129,43 +140,66 @@
         }
 
         .circle img {
-            width: 60%;
-            height: 60%;
+            width: 50%;
+            height: 50%;
             object-fit: contain;
         }
 
         .circle:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
             box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3);
         }
 
+        /* Description */
         .description-container {
-            position: relative;
-            margin: 50px auto;
-            width: 80%;
             text-align: center;
-            z-index: 2;
+            width: 90%;
+            max-width: 600px;
+            margin: 40px auto;
         }
 
         .description-text {
             color: #fff;
-            font-size: 1.2rem;
-            font-weight: 400;
+            font-size: 1rem;
             line-height: 1.5;
-            padding: 20px;
+            padding: 10px;
         }
 
+        /* Footer */
         .footer {
             margin-top: auto;
             text-align: center;
             color: #fff;
             background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px 10px 0 0;
-            position: static;
-            bottom: 0;
+            padding: 15px;
+            width: 100%;
         }
 
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .rectangle {
+                width: 90%;
+                max-width: 100%;
+            }
+
+            .circle {
+                width: 70px;
+                height: 70px;
+            }
+
+            .title-container b {
+                font-size: 1.8rem;
+            }
+
+            .description-text {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -190,7 +224,7 @@
 
     <div class="description-container">
         <p class="description-text">
-            I am Amine Keddouri, a passionate creator skilled in 3D Animation, Photo Editing, Video Editing, Website Development, and Website UI Design. I bring creativity and precision to every project I undertake.
+            I am Amine Keddouri, a passionate creator skilled in 3D Animation, Photo Editing, Video Editing, Website Development, and Website UI Design.
         </p>
     </div>
 

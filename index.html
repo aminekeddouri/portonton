@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gradient Title with Side Menu</title>
+    <title>Amine Keddouri - Portfolio</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -13,17 +13,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        /* Video Background */
-        #background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
         }
 
         /* Scroll Indicator */
@@ -70,7 +59,6 @@
         .rectangle {
             width: 100%;
             max-width: 360px;
-            height: auto;
             border-radius: 15px;
             overflow: hidden;
             position: relative;
@@ -80,8 +68,8 @@
 
         .rectangle img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
         }
 
         .rectangle:hover {
@@ -209,15 +197,15 @@
 
     <div class="content">
         <a href="video-3D.html" class="rectangle">
-            <img src="images/classroom.jpg" alt="3D Animation">
+            <img src="./images/classroom.jpg" alt="3D Animation">
             <div class="overlay"><span>3D Animation</span></div>
         </a>
         <a href="video-edit.html" class="rectangle">
-            <img src="images/1382144.png" alt="Video Editing">
+            <img src="./images/1382144.png" alt="Video Editing">
             <div class="overlay"><span>Video Editing</span></div>
         </a>
         <a href="image-edit.html" class="rectangle">
-            <img src="images/1323598.png" alt="Photo Editing">
+            <img src="./images/1323598.png" alt="Photo Editing">
             <div class="overlay"><span>Photo Editing</span></div>
         </a>
     </div>
@@ -230,13 +218,13 @@
 
     <div class="circle-container">
         <div class="circle">
-            <img src="images/email.png" alt="Email">
+            <img src="./images/email.png" alt="Email">
         </div>
         <div class="circle">
-            <img src="images/user-profile.png" alt="Profile">
+            <img src="./images/user-profile.png" alt="Profile">
         </div>
         <div class="circle">
-            <img src="images/3d-cube.png" alt="3D Cube">
+            <img src="./images/3d-cube.png" alt="3D Cube">
         </div>
     </div>
 

@@ -14,28 +14,29 @@
             flex-direction: column;
             align-items: center;
         }
-      /* Video background */
-.background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -2;
-}
 
-/* Blurry film overlay */
-.video-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.3); /* Dark semi-transparent filter */
-    backdrop-filter: blur(10px); /* Blurry effect */
-    z-index: -1;
-}
+        /* Video background */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        /* Blurry film overlay */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: -1;
+        }
 
         /* Scroll Indicator */
         #scroll-indicator {
@@ -219,7 +220,6 @@
     </video>
     <div class="video-overlay"></div> <!-- Blurry Overlay -->
     
-    
     <div id="scroll-indicator"></div>
     <div class="title-container" id="title"><b>AMINE KEDDOURI</b></div>
 
@@ -248,9 +248,9 @@
         <div class="circle">
             <img src="images/email.png" alt="Email">
         </div>
-        <div class="circle">
+        <a href="https://www.instagram.com/ox_3d_art/" target="_blank" class="circle">
             <img src="images/user-profile.png" alt="Profile">
-        </div>
+        </a>
         <div class="circle">
             <img src="images/3d-cube.png" alt="3D Cube">
         </div>

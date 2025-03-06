@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Page Setup -->
+    <meta charset="UTF-8"> <!-- Character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for all devices -->
+    <title>Video Page</title> <!-- Page title on browser tab -->
+
+    <style>
+        /* ===== General Page Styling ===== */
+        body {
+            margin: 0; /* Remove default margins */
+            display: flex; /* Enable flexible layout */
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center; /* Center elements horizontally */
+            background-color: #111; /* Dark background */
+            color: white; /* White text color */
+            font-family: 'Roboto', sans-serif; /* Custom font */
+            height: 100vh; /* Full screen height */
+            justify-content: flex-start; /* Start elements from the top */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* ===== Main Video Section ===== */
+        .video-container {
+            width: 100%; /* Take full width of the parent container */
+            max-width: 1200px; /* Set a maximum width to avoid stretching too much */
+            margin: 20px auto; /* Center the container with space */
+             border-radius: 20px; /* Rounded corners for video */
+        }
+
+        video {
+            width: 100%; /* Make the video fill the container */
+            height: 600px; /* Set a fixed height for consistency */
+            object-fit: cover; /* Prevent cropping or distortion */
+            border-radius: 20px; /* Rounded corners for video */
+        }
+
+        /* ===== Bottom Videos Section ===== */
+        .bottom-videos {
+            margin-top: 50px; /* Space between description and bottom videos */
+            display: flex; /* Arrange videos in a column */
+            flex-direction: column; /* Stack videos vertically */
+            align-items: center; /* Center-align videos */
+            gap: 30px; /* Space between video containers */
+        }
+
+        /* ===== Individual Bottom Video Containers ===== */
+        .bottom-video-container {
+            position: relative; /* Set container for positioning */
+            width: 100%; /* Make videos fill the container width */
+            max-width: 1200px; /* Set max width to match the first video size */
+            background-color: #222; /* Dark background color */
+            border-radius: 20px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); /* Shadow effect */
+            overflow: hidden; /* Hide overflow content */
+        }
+
+        /* ===== Text Under Each Video Container ===== */
+        .description-text {
+            margin-top: 15px; /* Space between video and text */
+            text-align: center; /* Center the text */
+            font-size: 1.2rem; /* Font size for the text */
+            color: white; /* White text color */
+            font-weight: bold; /* Bold text */
+        }
+    </style>
+</head>
+<body>
+    <div style="font-size:3rem; font-weight:bold; font-family:Arial, Helvetica, sans-serif; text-transform:uppercase; letter-spacing:5px; text-align:center; color:rgb(78, 255, 78);margin-top:50px;margin-bottom:50px;">SPRITE 3D commercial</div>
+
+    <!-- ===== Main Video Section ===== -->
+    <div class="video-container">
+        <video autoplay  d loop>
+            <source src="C:\Users\User\Desktop\website\SPRITE.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div style="font-size:3rem; font-weight:bold; font-family:Arial, Helvetica, sans-serif; text-transform:uppercase; letter-spacing:5px; text-align:center; color:rgb(84, 249, 246);margin-top:50px;margin-bottom:50px;">MILK 3D commercial</div>
+
+    <!-- ===== Bottom Videos Section ===== -->
+    <div class="bottom-videos">
+        <!-- Video 1 -->
+        <div class="bottom-video-container">
+            <video autoplay  d loop>
+                <source src="C:\Users\User\Desktop\website\milk.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+  <div style="font-size:3rem; font-weight:bold; font-family:Arial, Helvetica, sans-serif; text-transform:uppercase; letter-spacing:5px; text-align:center; color:rgb(153, 153, 153);margin-top:50px;margin-bottom:50px;">BMW 3D commercial</div>
+        <!-- Video 2 -->
+        <div class="bottom-video-container">
+            <video autoplay  d loop>
+                <source src="C:\Users\User\Desktop\website\BMW.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+  
+        <div style="font-size:3rem; font-weight:bold; font-family:Arial, Helvetica, sans-serif; text-transform:uppercase; letter-spacing:5px; text-align:center; color:rgb(255, 72, 72);margin-top:50px;margin-bottom:50px;">BISCUIT 3D commercial</div>
+        <!-- Video 3 -->
+        <div class="bottom-video-container">
+            <video autoplay  d loop>
+                <source src="C:\Users\User\Desktop\website\biscuit.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</body>
+</html>

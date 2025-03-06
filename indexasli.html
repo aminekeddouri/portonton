@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amine Keddouri - Portfolio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: grey;
+            min-height: 200vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Video background */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        /* Blurry film overlay */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: -1;
+        }
+
+        /* Scroll Indicator */
+        #scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: red;
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.2s;
+        }
+
+        /* Title */
+        .title-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            transition: opacity 0.5s;
+            text-align: center;
+            width: 100%;
+        }
+        .title-container b {
+            font-size: clamp(1.5rem, 5vw, 2.3rem);
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Content Section */
+        .content {
+            margin-top: 120px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            width: 90%;
+        }
+
+        .rectangle {
+            width: 100%;
+            max-width: 360px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .rectangle img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .rectangle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s;
+        }
+
+        .rectangle:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay span {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        /* Circle Icons */
+        .circle-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            width: 90%;
+        }
+
+        .circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .circle img {
+            width: 50%;
+            height: 50%;
+            object-fit: contain;
+        }
+
+        .circle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Description */
+        .description-container {
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+            margin: 40px auto;
+        }
+
+        .description-text {
+            color: #fff;
+            font-size: 1rem;
+            line-height: 1.5;
+            padding: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+            text-align: center;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            width: 100%;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .rectangle {
+                width: 90%;
+                max-width: 100%;
+            }
+
+            .circle {
+                width: 70px;
+                height: 70px;
+            }
+
+            .title-container b {
+                font-size: 1.8rem;
+            }
+
+            .description-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted playsinline class="background-video">
+        <source src="images/Solo Leveling Season 2 Cc Prob3-1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay"></div> <!-- Blurry Overlay -->
+    
+    <div id="scroll-indicator"></div>
+    <div class="title-container" id="title"><b>AMINE KEDDOURI</b></div>
+
+    <div class="content">
+        <a href="pages/video-3D.html" class="rectangle">
+            <img src="images/classroom.jpg" alt="3D Animation">
+            <div class="overlay"><span>3D Animation</span></div>
+        </a>
+        <a href="video-edit.html" class="rectangle">
+            <img src="images/1382144.png" alt="Video Editing">
+            <div class="overlay"><span>Video Editing</span></div>
+        </a>
+        <a href="image-edit.html" class="rectangle">
+            <img src="images/1323598.png" alt="Photo Editing">
+            <div class="overlay"><span>Photo Editing</span></div>
+        </a>
+    </div>
+
+    <div class="description-container">
+        <p class="description-text">
+            I am Amine Keddouri, a passionate creator skilled in 3D Animation, Photo Editing, Video Editing, Website Development, and Website UI Design.
+        </p>
+    </div>
+
+    <div class="circle-container">
+        <div class="circle">
+            <img src="images/email.png" alt="Email">
+        </div>
+        <a href="https://www.instagram.com/ox_3d_art/" target="_blank" class="circle">
+            <img src="images/user-profile.png" alt="Profile">
+        </a>
+        <div class="circle">
+            <img src="images/3d-cube.png" alt="3D Cube">
+        </div>
+    </div>
+
+    <div class="footer"><p>© 2025 Amine Keddouri. All Rights Reserved.</p></div>
+
+    <script>
+        const title = document.getElementById('title');
+        const scrollIndicator = document.getElementById('scroll-indicator');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            title.style.opacity = scrollTop > 100 ? '0' : '1';
+            const scrollPercentage = (scrollTop / (document.body.scrollHeight - window.innerHeight)) * 100;
+            scrollIndicator.style.width = `${scrollPercentage}%`;
+        });
+    </script>
+
+</body>
+</html>

@@ -1,274 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amine Keddouri - Portfolio</title>
+    <!-- Page Setup -->
+    <meta charset="UTF-8"> <!-- Character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for all devices -->
+    <title>Video Page</title> <!-- Page title on browser tab -->
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* ===== General Page Styling ===== */
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: grey;
-            min-height: 200vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            margin: 0; /* Remove default margins */
+            display: flex; /* Enable flexible layout */
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center; /* Center elements horizontally */
+            background-color: #111; /* Dark background */
+            color: white; /* White text color */
+            font-family: 'Roboto', sans-serif; /* Custom font */
+            height: 100vh; /* Full screen height */
+            justify-content: flex-start; /* Start elements from the top */
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
-        /* Video background */
-        .background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -2;
+        /* ===== Main Video Section ===== */
+        .video-container {
+            width: 100%; /* Take full width of the parent container */
+            max-width: 1200px; /* Set a maximum width to avoid stretching too much */
+            margin: 20px auto; /* Center the container with space */
+             border-radius: 20px; /* Rounded corners for video */
         }
 
-        /* Blurry film overlay */
-        .video-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            z-index: -1;
+        video {
+            width: 100%; /* Make the video fill the container */
+            height: 600px; /* Set a fixed height for consistency */
+            object-fit: cover; /* Prevent cropping or distortion */
+            border-radius: 20px; /* Rounded corners for video */
         }
 
-        /* Scroll Indicator */
-        #scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 5px;
-            background: red;
-            width: 0%;
-            z-index: 1000;
-            transition: width 0.2s;
+        /* ===== Bottom Videos Section ===== */
+        .bottom-videos {
+            margin-top: 50px; /* Space between description and bottom videos */
+            display: flex; /* Arrange videos in a column */
+            flex-direction: column; /* Stack videos vertically */
+            align-items: center; /* Center-align videos */
+            gap: 30px; /* Space between video containers */
         }
 
-        /* Title */
-        .title-container {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            transition: opacity 0.5s;
-            text-align: center;
-            width: 100%;
-        }
-        .title-container b {
-            font-size: clamp(1.5rem, 5vw, 2.3rem);
-            font-weight: 600;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 3px;
+        /* ===== Individual Bottom Video Containers ===== */
+        .bottom-video-container {
+            position: relative; /* Set container for positioning */
+            width: 100%; /* Make videos fill the container width */
+            max-width: 1200px; /* Set max width to match the first video size */
+            background-color: #222; /* Dark background color */
+            border-radius: 20px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); /* Shadow effect */
+            overflow: hidden; /* Hide overflow content */
         }
 
-        /* Content Section */
-        .content {
-            margin-top: 120px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            width: 90%;
-        }
-
-        .rectangle {
-            width: 100%;
-            max-width: 360px;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .rectangle img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .rectangle:hover {
-            transform: scale(1.05);
-            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3);
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.3s;
-        }
-
-        .rectangle:hover .overlay {
-            opacity: 1;
-        }
-
-        .overlay span {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        /* Circle Icons */
-        .circle-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-            width: 90%;
-        }
-
-        .circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-
-        .circle img {
-            width: 50%;
-            height: 50%;
-            object-fit: contain;
-        }
-
-        .circle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Description */
-        .description-container {
-            text-align: center;
-            width: 90%;
-            max-width: 600px;
-            margin: 40px auto;
-        }
-
+        /* ===== Text Under Each Video Container ===== */
         .description-text {
-            color: #fff;
-            font-size: 1rem;
-            line-height: 1.5;
-            padding: 10px;
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: auto;
-            text-align: center;
-            color: #fff;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px;
-            width: 100%;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .content {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .rectangle {
-                width: 90%;
-                max-width: 100%;
-            }
-
-            .circle {
-                width: 70px;
-                height: 70px;
-            }
-
-            .title-container b {
-                font-size: 1.8rem;
-            }
-
-            .description-text {
-                font-size: 1rem;
-            }
+            margin-top: 15px; /* Space between video and text */
+            text-align: center; /* Center the text */
+            font-size: 1.2rem; /* Font size for the text */
+            color: white; /* White text color */
+            font-weight: bold; /* Bold text */
         }
     </style>
 </head>
 <body>
-    <video autoplay loop muted playsinline class="background-video">
-        <source src="images/Solo Leveling Season 2 Cc Prob3-1.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <div class="video-overlay"></div> <!-- Blurry Overlay -->
-    
-    <div id="scroll-indicator"></div>
-    <div class="title-container" id="title"><b>AMINE KEDDOURI</b></div>
+    <div style="font-size:3rem; font-weight:bold; font-family:Arial, Helvetica, sans-serif; text-transform:uppercase; letter-spacing:5px; text-align:center; color:rgb(78, 255, 78);margin-top:50px;margin-bottom:50px;">SPRITE 3D commercial</div>
 
-    <div class="content">
-        <a href="pages/video-3D.html" class="rectangle">
-            <img src="images/classroom.jpg" alt="3D Animation">
-            <div class="overlay"><span>3D Animation</span></div>
-        </a>
-        <a href="video-edit.html" class="rectangle">
-            <img src="images/1382144.png" alt="Video Editing">
-            <div class="overlay"><span>Video Editing</span></div>
-        </a>
-        <a href="image-edit.html" class="rectangle">
-            <img src="images/1323598.png" alt="Photo Editing">
-            <div class="overlay"><span>Photo Editing</span></div>
-        </a>
+    <!-- ===== Main Video Section ===== -->
+    <div class="video-container">
+        <video autoplay  d loop>
+            <source src="C:\Users\User\Desktop\website\SPRITE.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
+    <div style="font-size:3rem; font-weight:bold; font-family:Arial, Helvetica, sans-serif; text-transform:uppercase; letter-spacing:5px; text-align:center; color:rgb(84, 249, 246);margin-top:50px;margin-bottom:50px;">MILK 3D commercial</div>
 
-    <div class="description-container">
-        <p class="description-text">
-            I am Amine Keddouri, a passionate creator skilled in 3D Animation, Photo Editing, Video Editing, Website Development, and Website UI Design.
-        </p>
-    </div>
-
-    <div class="circle-container">
-        <div class="circle">
-            <img src="images/email.png" alt="Email">
+    <!-- ===== Bottom Videos Section ===== -->
+    <div class="bottom-videos">
+        <!-- Video 1 -->
+        <div class="bottom-video-container">
+            <video autoplay  d loop>
+                <source src="C:\Users\User\Desktop\website\milk.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
-        <a href="https://www.instagram.com/ox_3d_art/" target="_blank" class="circle">
-            <img src="images/user-profile.png" alt="Profile">
-        </a>
-        <div class="circle">
-            <img src="images/3d-cube.png" alt="3D Cube">
+
+  <div style="font-size:3rem; font-weight:bold; font-family:Arial, Helvetica, sans-serif; text-transform:uppercase; letter-spacing:5px; text-align:center; color:rgb(153, 153, 153);margin-top:50px;margin-bottom:50px;">BMW 3D commercial</div>
+        <!-- Video 2 -->
+        <div class="bottom-video-container">
+            <video autoplay  d loop>
+                <source src="C:\Users\User\Desktop\website\BMW.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+  
+        <div style="font-size:3rem; font-weight:bold; font-family:Arial, Helvetica, sans-serif; text-transform:uppercase; letter-spacing:5px; text-align:center; color:rgb(255, 72, 72);margin-top:50px;margin-bottom:50px;">BISCUIT 3D commercial</div>
+        <!-- Video 3 -->
+        <div class="bottom-video-container">
+            <video autoplay  d loop>
+                <source src="C:\Users\User\Desktop\website\biscuit.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </div>
-
-    <div class="footer"><p>© 2025 Amine Keddouri. All Rights Reserved.</p></div>
-
-    <script>
-        const title = document.getElementById('title');
-        const scrollIndicator = document.getElementById('scroll-indicator');
-
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
-            title.style.opacity = scrollTop > 100 ? '0' : '1';
-            const scrollPercentage = (scrollTop / (document.body.scrollHeight - window.innerHeight)) * 100;
-            scrollIndicator.style.width = `${scrollPercentage}%`;
-        });
-    </script>
-
 </body>
 </html>

@@ -54,7 +54,7 @@
             font-weight: bold;
         }
 
-        /* Large screens: Show 4 videos side by side with spacing */
+        /* Large screens: Adjust video sizes */
         @media (min-width: 1024px) {
             .videos-row {
                 flex-wrap: nowrap;
@@ -64,9 +64,18 @@
             }
 
             .video-container {
-                width: calc(25% - 10px); /* 4 videos in a row with spacing */
-                height: 100vh;
+                height: 90vh;
                 padding: 0;
+            }
+
+            /* Make 1st, 2nd, and 4th videos slightly smaller */
+            .video-small {
+                width: calc(22% - 10px); 
+            }
+
+            /* Keep 3rd video bigger */
+            .video-large {
+                width: calc(30% - 10px);
             }
 
             video {
@@ -80,29 +89,29 @@
 <body>
 
     <div class="videos-row">
-        <div class="video-container">
-            <video class="video" controls>
+        <div class="video-container video-small">
+            <video class="video" muted>
                 <source src="vids/vid vids/final without tracking.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
 
-        <div class="video-container">
-            <video class="video" controls>
+        <div class="video-container video-small">
+            <video class="video" muted>
                 <source src="vids/vid vids/touareg.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
 
-        <div class="video-container">
-            <video class="video" controls>
+        <div class="video-container video-large">
+            <video class="video" muted>
                 <source src="vids/vid vids/V1.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
 
-        <div class="video-container">
-            <video class="video" controls>
+        <div class="video-container video-small">
+            <video class="video" muted>
                 <source src="vids/vid vids/bmw edit.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -112,6 +121,21 @@
     <div class="description">
         <p>Amine Keddouri is a talented <strong>3D Designer</strong> and <strong>Video Editor</strong> with a passion for creating stunning visual art. With over <span class="highlight">5 years of experience</span> in the field, he brings creativity and technical expertise to every project. Additionally, Amine is a dedicated <strong>Teacher</strong> who has inspired countless students, sharing his knowledge and love for design and technology.</p>
     </div>
+
+    <script>
+        const videos = document.querySelectorAll(".video");
+
+        videos.forEach(video => {
+            video.addEventListener("click", () => {
+                if (video.paused) {
+                    videos.forEach(v => v.pause()); // Pause other videos
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>

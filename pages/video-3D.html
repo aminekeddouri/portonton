@@ -18,31 +18,6 @@
             overflow-x: hidden;
         }
 
-        .video-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 20px auto;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .bottom-videos {
-            margin-top: 50px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .bottom-video-container {
-            width: 100%;
-            max-width: 1200px;
-            background-color: #222;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-            overflow: hidden;
-        }
-
         .video-title {
             font-size: 3rem;
             font-weight: bold;
@@ -52,13 +27,35 @@
             margin: 50px 0;
         }
 
-        /* Responsive Videos */
-        video, iframe {
-            width: 100%;
-            height: 100%;
-            display: block;
+        /* Video container with aspect ratio fix */
+        .video-container, .bottom-video-container {
+            position: relative;
+            width: 90%; /* Adjust width */
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #222;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
         }
 
+        /* Maintain 16:9 aspect ratio */
+        .video-container::before,
+        .bottom-video-container::before {
+            content: "";
+            display: block;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        video, iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Mobile adjustments */
         @media (max-width: 768px) {
             .video-title {
                 font-size: 2rem;
@@ -66,10 +63,7 @@
                 margin: 20px 0;
             }
             .video-container, .bottom-video-container {
-                max-width: 100%;
-            }
-            .bottom-videos {
-                margin-top: 30px;
+                width: 95%;
             }
         }
     </style>
@@ -88,35 +82,33 @@
 
     <div class="video-title" style="color: rgb(84, 249, 246);">MILK 3D commercial</div>
 
-    <div class="bottom-videos">
-        <div class="bottom-video-container">
-            <video autoplay loop muted playsinline>
-                <source src="images/Solo Leveling Season 2 Cc Prob3-1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
+    <div class="bottom-video-container">
+        <video autoplay loop muted playsinline>
+            <source src="images/Solo Leveling Season 2 Cc Prob3-1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
-        <div class="video-title" style="color: rgb(153, 153, 153);">BMW 3D commercial</div>
+    <div class="video-title" style="color: rgb(153, 153, 153);">BMW 3D commercial</div>
 
-        <div class="bottom-video-container">
-            <video autoplay loop muted playsinline>
-                <source src="pages/vids/BMW.mp4" type="video/mp4">
-                <source src="pages/vids/BMW.webm" type="video/webm">
-                Your browser does not support the video tag.
-            </video>
-        </div>
+    <div class="bottom-video-container">
+        <video autoplay loop muted playsinline>
+            <source src="pages/vids/BMW.mp4" type="video/mp4">
+            <source src="pages/vids/BMW.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
-        <div class="video-title" style="color: rgb(255, 72, 72);">BISCUIT 3D commercial</div>
+    <div class="video-title" style="color: rgb(255, 72, 72);">BISCUIT 3D commercial</div>
 
-        <!-- Embedded YouTube video with autoplay, loop, and no timeline -->
-        <div class="bottom-video-container">
-            <iframe 
-                src="https://www.youtube.com/embed/oihc-x-JV0A?autoplay=1&loop=1&playlist=oihc-x-JV0A&controls=0&modestbranding=1&showinfo=0" 
-                frameborder="0" 
-                allow="autoplay; encrypted-media; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-        </div>
+    <!-- Fixed YouTube embed -->
+    <div class="bottom-video-container">
+        <iframe 
+            src="https://www.youtube.com/embed/oihc-x-JV0A?autoplay=1&loop=1&playlist=oihc-x-JV0A&controls=0&modestbranding=1&showinfo=0" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
     </div>
 
 </body>

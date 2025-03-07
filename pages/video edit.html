@@ -20,18 +20,16 @@
 
         .videos-row {
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
+            width: 100%;
+            justify-content: center;
         }
 
         .video-container {
-            width: 100%;
-            max-width: 300px; /* Limits size on large screens */
+            width: 100%; /* Full width on phones */
+            max-width: 100%;
             background-color: #111;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
             padding: 5px;
             overflow: hidden;
         }
@@ -39,8 +37,8 @@
         video {
             width: 100%;
             height: auto;
-            object-fit: cover;
-            border-radius: 15px;
+            aspect-ratio: 16 / 9;
+            border-radius: 10px;
         }
 
         .description {
@@ -56,15 +54,25 @@
             font-weight: bold;
         }
 
-        @media (min-width: 768px) {
-            .video-container {
-                width: 45%; /* Adjusts for tablet and larger screens */
-            }
-        }
-
+        /* Large screens: Show 4 videos side by side with spacing */
         @media (min-width: 1024px) {
+            .videos-row {
+                flex-wrap: nowrap;
+                justify-content: center;
+                height: 100vh;
+                gap: 10px; /* Adds space between videos */
+            }
+
             .video-container {
-                width: 22%; /* Adjusts for desktops */
+                width: calc(25% - 10px); /* 4 videos in a row with spacing */
+                height: 100vh;
+                padding: 0;
+            }
+
+            video {
+                height: 100%;
+                width: 100%;
+                object-fit: cover; /* Fill screen while maintaining aspect ratio */
             }
         }
     </style>
@@ -104,20 +112,6 @@
     <div class="description">
         <p>Amine Keddouri is a talented <strong>3D Designer</strong> and <strong>Video Editor</strong> with a passion for creating stunning visual art. With over <span class="highlight">5 years of experience</span> in the field, he brings creativity and technical expertise to every project. Additionally, Amine is a dedicated <strong>Teacher</strong> who has inspired countless students, sharing his knowledge and love for design and technology.</p>
     </div>
-
-    <script>
-        const videos = document.querySelectorAll(".video");
-
-        if (window.matchMedia("(hover: hover)").matches) {
-            videos.forEach(video => {
-                video.addEventListener("mouseenter", () => video.play());
-                video.addEventListener("mouseleave", () => {
-                    video.pause();
-                    video.currentTime = 0;
-                });
-            });
-        }
-    </script>
 
 </body>
 </html>

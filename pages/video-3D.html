@@ -50,6 +50,36 @@
             text-align: center;
             margin: 50px 0;
         }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .video-title {
+                font-size: 2rem;
+                letter-spacing: 2px;
+                margin: 20px 0;
+            }
+
+            .video-container, .bottom-video-container {
+                max-width: 100%;
+            }
+
+            .bottom-videos {
+                margin-top: 30px;
+            }
+
+            iframe {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        /* PC Responsiveness (larger screens) */
+        @media (min-width: 769px) {
+            .video-container video, .bottom-video-container video {
+                width: 100%;
+                height: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -88,7 +118,7 @@
 
         <!-- Embedded YouTube video for BISCUIT commercial -->
         <div class="bottom-video-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/oihc-x-JV0A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/oihc-x-JV0A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 

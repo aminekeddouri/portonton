@@ -26,7 +26,7 @@
         }
 
         .video-container {
-            width: 100%;
+            width: 100%; /* Full width on phones */
             max-width: 100%;
             background-color: #111;
             border-radius: 10px;
@@ -37,15 +37,8 @@
         video {
             width: 100%;
             height: auto;
-            max-height: 90vh;
+            aspect-ratio: 16 / 9;
             border-radius: 10px;
-        }
-
-        .vertical-video {
-            width: auto;
-            height: 90vh;
-            max-width: 100%;
-            object-fit: cover;
         }
 
         .description {
@@ -61,32 +54,25 @@
             font-weight: bold;
         }
 
-        /* Large screens: Smaller videos with spacing */
+        /* Large screens: Show 4 videos side by side with spacing */
         @media (min-width: 1024px) {
             .videos-row {
                 flex-wrap: nowrap;
                 justify-content: center;
                 height: 100vh;
-                gap: 15px;
+                gap: 10px; /* Adds space between videos */
             }
 
             .video-container {
-                width: calc(30% - 15px);
-                height: 80vh;
+                width: calc(25% - 10px); /* 4 videos in a row with spacing */
+                height: 100vh;
                 padding: 0;
             }
 
             video {
                 height: 100%;
                 width: 100%;
-                object-fit: cover;
-            }
-
-            .vertical-video {
-                width: auto;
-                height: 100%;
-                max-width: 100%;
-                object-fit: fill;
+                object-fit: cover; /* Fill screen while maintaining aspect ratio */
             }
         }
     </style>
@@ -95,28 +81,28 @@
 
     <div class="videos-row">
         <div class="video-container">
-            <video class="video" muted>
+            <video class="video" controls>
                 <source src="vids/vid vids/final without tracking.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
 
         <div class="video-container">
-            <video class="video vertical-video" muted>
+            <video class="video" controls>
                 <source src="vids/vid vids/touareg.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
 
         <div class="video-container">
-            <video class="video" muted>
+            <video class="video" controls>
                 <source src="vids/vid vids/V1.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
 
         <div class="video-container">
-            <video class="video vertical-video" muted>
+            <video class="video" controls>
                 <source src="vids/vid vids/bmw edit.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -126,28 +112,6 @@
     <div class="description">
         <p>Amine Keddouri is a talented <strong>3D Designer</strong> and <strong>Video Editor</strong> with a passion for creating stunning visual art. With over <span class="highlight">5 years of experience</span> in the field, he brings creativity and technical expertise to every project. Additionally, Amine is a dedicated <strong>Teacher</strong> who has inspired countless students, sharing his knowledge and love for design and technology.</p>
     </div>
-
-    <script>
-        const videos = document.querySelectorAll(".video");
-
-        videos.forEach(video => {
-            video.addEventListener("play", () => {
-                videos.forEach(v => {
-                    if (v !== video) {
-                        v.pause();
-                        v.currentTime = 0; // Reset previous video
-                    }
-                });
-            });
-
-            // Check if video is vertical
-            video.addEventListener("loadedmetadata", () => {
-                if (video.videoHeight > video.videoWidth) {
-                    video.classList.add("vertical-video");
-                }
-            });
-        });
-    </script>
 
 </body>
 </html>

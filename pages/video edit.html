@@ -26,7 +26,7 @@
         }
 
         .video-container {
-            width: 100%; /* Full width on phones */
+            width: 100%;
             max-width: 100%;
             background-color: #111;
             border-radius: 10px;
@@ -37,8 +37,15 @@
         video {
             width: 100%;
             height: auto;
-            aspect-ratio: 16 / 9;
+            max-height: 90vh;
             border-radius: 10px;
+        }
+
+        .vertical-video {
+            width: auto;
+            height: 90vh;
+            max-width: 100%;
+            object-fit: cover;
         }
 
         .description {
@@ -60,11 +67,11 @@
                 flex-wrap: nowrap;
                 justify-content: center;
                 height: 100vh;
-                gap: 15px; /* More space between videos */
+                gap: 15px;
             }
 
             .video-container {
-                width: calc(30% - 15px); /* Smaller size */
+                width: calc(30% - 15px);
                 height: 80vh;
                 padding: 0;
             }
@@ -72,7 +79,14 @@
             video {
                 height: 100%;
                 width: 100%;
-                object-fit: cover; /* Ensures no stretching */
+                object-fit: cover;
+            }
+
+            .vertical-video {
+                width: auto;
+                height: 100%;
+                max-width: 100%;
+                object-fit: fill;
             }
         }
     </style>
@@ -88,7 +102,7 @@
         </div>
 
         <div class="video-container">
-            <video class="video" muted>
+            <video class="video vertical-video" muted>
                 <source src="vids/vid vids/touareg.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -102,7 +116,7 @@
         </div>
 
         <div class="video-container">
-            <video class="video" muted>
+            <video class="video vertical-video" muted>
                 <source src="vids/vid vids/bmw edit.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -124,6 +138,13 @@
                         v.currentTime = 0; // Reset previous video
                     }
                 });
+            });
+
+            // Check if video is vertical
+            video.addEventListener("loadedmetadata", () => {
+                if (video.videoHeight > video.videoWidth) {
+                    video.classList.add("vertical-video");
+                }
             });
         });
     </script>

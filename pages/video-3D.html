@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Page</title>
+
     <style>
         body {
             margin: 0;
@@ -13,22 +14,24 @@
             background-color: #111;
             color: white;
             font-family: 'Roboto', sans-serif;
-            height: 100vh;
             justify-content: flex-start;
             overflow-x: hidden;
         }
+
         .video-container {
             width: 100%;
             max-width: 1200px;
             margin: 20px auto;
             border-radius: 20px;
         }
+
         video {
             width: 100%;
-            height: 600px;
+            height: auto;
             object-fit: cover;
             border-radius: 20px;
         }
+
         .bottom-videos {
             margin-top: 50px;
             display: flex;
@@ -36,8 +39,8 @@
             align-items: center;
             gap: 30px;
         }
+
         .bottom-video-container {
-            position: relative;
             width: 100%;
             max-width: 1200px;
             background-color: #222;
@@ -45,58 +48,60 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
             overflow: hidden;
         }
+
+        .video-title {
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-align: center;
+            margin: 50px 0;
+        }
     </style>
 </head>
 <body>
-    <div style="font-size:3rem; font-weight:bold; font-family:Arial, Helvetica, sans-serif; text-transform:uppercase; letter-spacing:5px; text-align:center; color:rgb(78, 255, 78); margin-top:50px; margin-bottom:50px;">
-        SPRITE 3D commercial
-    </div>
 
-    <!-- ===== Main Video Section ===== -->
+    <div class="video-title" style="color: rgb(78, 255, 78);">SPRITE 3D commercial</div>
+
     <div class="video-container">
-        <video autoplay loop>
-            <source src="vids/sprite.mp4" type="video/mp4">
+        <video autoplay loop muted playsinline>
+            <source src="pages/vids/sprite.mp4" type="video/mp4">
+            <source src="pages/vids/sprite.webm" type="video/webm">
             Your browser does not support the video tag.
         </video>
     </div>
 
-    <div style="font-size:3rem; font-weight:bold; font-family:Arial, Helvetica, sans-serif; text-transform:uppercase; letter-spacing:5px; text-align:center; color:rgb(84, 249, 246); margin-top:50px; margin-bottom:50px;">
-        MILK 3D commercial
-    </div>
+    <div class="video-title" style="color: rgb(84, 249, 246);">MILK 3D commercial</div>
 
-    <!-- ===== Bottom Videos Section ===== -->
     <div class="bottom-videos">
-        <!-- Video 1 -->
         <div class="bottom-video-container">
-            <video autoplay loop>
-                <source src="vids/milk.mp4" type="video/mp4">
+            <video autoplay loop muted playsinline>
+                <source src="pages/vids/milk.mp4" type="video/mp4">
+                <source src="pages/vids/milk.webm" type="video/webm">
                 Your browser does not support the video tag.
             </video>
         </div>
 
-        <div style="font-size:3rem; font-weight:bold; font-family:Arial, Helvetica, sans-serif; text-transform:uppercase; letter-spacing:5px; text-align:center; color:rgb(153, 153, 153); margin-top:50px; margin-bottom:50px;">
-            BMW 3D commercial
-        </div>
+        <div class="video-title" style="color: rgb(153, 153, 153);">BMW 3D commercial</div>
 
-        <!-- Video 2 -->
         <div class="bottom-video-container">
-            <video autoplay loop>
-                <source src="vids/BMW.mp4" type="video/mp4">
+            <video autoplay loop muted playsinline>
+                <source src="pages/vids/BMW.mp4" type="video/mp4">
+                <source src="pages/vids/BMW.webm" type="video/webm">
                 Your browser does not support the video tag.
             </video>
         </div>
 
-        <div style="font-size:3rem; font-weight:bold; font-family:Arial, Helvetica, sans-serif; text-transform:uppercase; letter-spacing:5px; text-align:center; color:rgb(255, 72, 72); margin-top:50px; margin-bottom:50px;">
-            BISCUIT 3D commercial
-        </div>
+        <div class="video-title" style="color: rgb(255, 72, 72);">BISCUIT 3D commercial</div>
 
-        <!-- Video 3 -->
         <div class="bottom-video-container">
-            <video autoplay loop>
-                <source src="vids/biscuit.mp4" type="video/mp4">
+            <video autoplay loop muted playsinline>
+                <source src="pages/vids/biscuit.mp4" type="video/mp4">
+                <source src="pages/vids/biscuit.webm" type="video/webm">
                 Your browser does not support the video tag.
             </video>
         </div>
     </div>
+
 </body>
 </html>

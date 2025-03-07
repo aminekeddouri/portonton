@@ -19,32 +19,32 @@
         }
 
         .video-title {
-            font-size: 3rem;
+            font-size: 2.5rem; /* Slightly smaller title */
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: 3px;
             text-align: center;
-            margin: 50px 0;
+            margin: 40px 0;
         }
 
-        /* Video container with aspect ratio fix */
+        /* Video container with a smaller size */
         .video-container, .bottom-video-container {
             position: relative;
-            width: 90%; /* Adjust width */
-            max-width: 1200px;
-            margin: 20px auto;
-            border-radius: 20px;
+            width: 80%; /* Reduced from 90% */
+            max-width: 900px; /* Smaller max width */
+            margin: 15px auto;
+            border-radius: 15px;
             overflow: hidden;
             background-color: #222;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
         }
 
-        /* Maintain 16:9 aspect ratio */
+        /* Maintain 16:9 aspect ratio but make the video smaller */
         .video-container::before,
         .bottom-video-container::before {
             content: "";
             display: block;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            padding-top: 50%; /* Reduced height */
         }
 
         video, iframe {
@@ -63,7 +63,7 @@
                 margin: 20px 0;
             }
             .video-container, .bottom-video-container {
-                width: 95%;
+                width: 90%;
             }
         }
     </style>
@@ -101,10 +101,10 @@
 
     <div class="video-title" style="color: rgb(255, 72, 72);">BISCUIT 3D commercial</div>
 
-    <!-- Fixed YouTube embed -->
+    <!-- YouTube Embed (Autoplay, Loop, Hidden Title & Channel) -->
     <div class="bottom-video-container">
         <iframe 
-            src="https://www.youtube.com/embed/oihc-x-JV0A?autoplay=1&loop=1&playlist=oihc-x-JV0A&controls=0&modestbranding=1&showinfo=0" 
+            src="https://www.youtube.com/embed/oihc-x-JV0A?autoplay=1&loop=1&playlist=oihc-x-JV0A&controls=0&modestbranding=1&rel=0&showinfo=0" 
             frameborder="0" 
             allow="autoplay; encrypted-media; picture-in-picture" 
             allowfullscreen>

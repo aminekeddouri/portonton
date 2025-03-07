@@ -23,6 +23,7 @@
             max-width: 1200px;
             margin: 20px auto;
             border-radius: 20px;
+            overflow: hidden;
         }
 
         .bottom-videos {
@@ -51,33 +52,24 @@
             margin: 50px 0;
         }
 
-        /* Mobile Responsiveness */
+        /* Responsive Videos */
+        video, iframe {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
         @media (max-width: 768px) {
             .video-title {
                 font-size: 2rem;
                 letter-spacing: 2px;
                 margin: 20px 0;
             }
-
             .video-container, .bottom-video-container {
                 max-width: 100%;
             }
-
             .bottom-videos {
                 margin-top: 30px;
-            }
-
-            iframe {
-                width: 100%;
-                height: auto;
-            }
-        }
-
-        /* PC Responsiveness (larger screens) */
-        @media (min-width: 769px) {
-            .video-container video, .bottom-video-container video {
-                width: 100%;
-                height: auto;
             }
         }
     </style>
@@ -98,7 +90,7 @@
 
     <div class="bottom-videos">
         <div class="bottom-video-container">
-            <video autoplay loop muted playsinline class="background-video">
+            <video autoplay loop muted playsinline>
                 <source src="images/Solo Leveling Season 2 Cc Prob3-1.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -116,9 +108,14 @@
 
         <div class="video-title" style="color: rgb(255, 72, 72);">BISCUIT 3D commercial</div>
 
-        <!-- Embedded YouTube video for BISCUIT commercial -->
+        <!-- Embedded YouTube video with autoplay, loop, and no timeline -->
         <div class="bottom-video-container">
-            <iframe src="https://www.youtube.com/embed/oihc-x-JV0A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe 
+                src="https://www.youtube.com/embed/oihc-x-JV0A?autoplay=1&loop=1&playlist=oihc-x-JV0A&controls=0&modestbranding=1&showinfo=0" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
         </div>
     </div>
 

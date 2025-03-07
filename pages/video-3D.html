@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Page</title>
-
     <style>
         body {
             margin: 0;
@@ -70,46 +69,105 @@
 </head>
 <body>
 
-    <div class="video-title" style="color: rgb(78, 255, 78);">SPRITE 3D commercial</div>
-
-    <div class="video-container">
-        <video autoplay loop muted playsinline>
-            <source src="pages/vids/sprite.mp4" type="video/mp4">
-            <source src="pages/vids/sprite.webm" type="video/webm">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-
-    <div class="video-title" style="color: rgb(84, 249, 246);">MILK 3D commercial</div>
-
-    <div class="bottom-video-container">
-        <video autoplay loop muted playsinline>
-            <source src="images/Solo Leveling Season 2 Cc Prob3-1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-
-    <div class="video-title" style="color: rgb(153, 153, 153);">BMW 3D commercial</div>
-
-    <div class="bottom-video-container">
-        <video autoplay loop muted playsinline>
-            <source src="pages/vids/BMW.mp4" type="video/mp4">
-            <source src="pages/vids/BMW.webm" type="video/webm">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-
-    <div class="video-title" style="color: rgb(255, 72, 72);">BISCUIT 3D commercial</div>
-
-    <!-- YouTube Embed (Autoplay, Loop, Hidden Title & Channel) -->
-    <div class="bottom-video-container">
+    <!-- Porshe Commercial -->
+    <div class="video-title" style="color: rgb(255, 255, 255);">PORSHE 3D commercial</div>
+    <div class="video-container" id="porshe-video">
         <iframe 
-            src="https://www.youtube.com/embed/oihc-x-JV0A?autoplay=1&loop=1&playlist=oihc-x-JV0A&controls=0&modestbranding=1&rel=0&showinfo=0" 
+            id="porshe-iframe"
+            src="https://www.youtube.com/embed/nu-REukk3Ds?autoplay=0&mute=1&loop=1&playlist=nu-REukk3Ds&vq=hd1080&modestbranding=1&controls=0&showinfo=0&rel=0&cc_load_policy=0" 
             frameborder="0" 
-            allow="autoplay; encrypted-media; picture-in-picture" 
+            allow="autoplay; encrypted-media" 
             allowfullscreen>
         </iframe>
     </div>
+
+    <!-- Sprite Commercial -->
+    <div class="video-title" style="color: rgb(78, 255, 78);">SPRITE 3D commercial</div>
+    <div class="video-container" id="sprite-video">
+        <iframe 
+            id="sprite-iframe"
+            src="https://www.youtube.com/embed/unVCloA3yi0?autoplay=0&mute=1&loop=1&playlist=unVCloA3yi0&vq=hd1080&modestbranding=1&controls=0&showinfo=0&rel=0&cc_load_policy=0" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- Milk Commercial -->
+    <div class="video-title" style="color: rgb(84, 249, 246);">MILK 3D commercial</div>
+    <div class="video-container" id="milk-video">
+        <iframe 
+            id="milk-iframe"
+            src="https://www.youtube.com/embed/GWO0SZRaDlc?autoplay=0&mute=1&loop=1&playlist=GWO0SZRaDlc&vq=hd1080&modestbranding=1&controls=0&showinfo=0&rel=0&cc_load_policy=0" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- BMW Commercial -->
+    <div class="video-title" style="color: rgb(153, 153, 153);">BMW 3D commercial</div>
+    <div class="video-container" id="bmw-video">
+        <iframe 
+            id="bmw-iframe"
+            src="https://www.youtube.com/embed/481vg_MfoRM?autoplay=0&mute=1&loop=1&playlist=481vg_MfoRM&vq=hd1080&modestbranding=1&controls=0&showinfo=0&rel=0&cc_load_policy=0" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- Biscuit Commercial -->
+    <div class="video-title" style="color: rgb(255, 72, 72);">BISCUIT 3D commercial</div>
+    <div class="bottom-video-container" id="biscuit-video">
+        <iframe 
+            id="biscuit-iframe"
+            src="https://www.youtube.com/embed/oihc-x-JV0A?autoplay=0&mute=1&loop=1&playlist=oihc-x-JV0A&vq=hd1080&modestbranding=1&controls=0&showinfo=0&rel=0&cc_load_policy=0" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <script>
+        // Function to play the video when it's fully in view
+        function checkVideoVisibility(videoId, iframeId) {
+            const videoElement = document.getElementById(videoId);
+            const videoIframe = document.getElementById(iframeId);
+            const videoRect = videoElement.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            // Check if the video is fully in view
+            if (videoRect.top >= 0 && videoRect.bottom <= windowHeight) {
+                const src = videoIframe.src.replace("autoplay=0", "autoplay=1"); // Add autoplay
+                videoIframe.src = src;  // Update iframe src to trigger autoplay
+            }
+
+            // Pause video when it's half out of view
+            if (videoRect.top < windowHeight / 2 && videoRect.bottom > windowHeight / 2) {
+                const src = videoIframe.src.replace("autoplay=1", "autoplay=0"); // Remove autoplay
+                videoIframe.src = src; // Update iframe src to stop autoplay
+            }
+        }
+
+        // Check visibility of videos on scroll
+        window.addEventListener('scroll', function () {
+            checkVideoVisibility('porshe-video', 'porshe-iframe');
+            checkVideoVisibility('sprite-video', 'sprite-iframe');
+            checkVideoVisibility('milk-video', 'milk-iframe');
+            checkVideoVisibility('bmw-video', 'bmw-iframe');
+            checkVideoVisibility('biscuit-video', 'biscuit-iframe');
+        });
+
+        // Initially check visibility of all videos
+        window.onload = function () {
+            checkVideoVisibility('porshe-video', 'porshe-iframe');
+            checkVideoVisibility('sprite-video', 'sprite-iframe');
+            checkVideoVisibility('milk-video', 'milk-iframe');
+            checkVideoVisibility('bmw-video', 'bmw-iframe');
+            checkVideoVisibility('biscuit-video', 'biscuit-iframe');
+        };
+    </script>
 
 </body>
 </html>

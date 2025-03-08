@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,6 @@
             flex-direction: column;
             align-items: center;
         }
-
         /* Video background */
         .background-video {
             position: fixed;
@@ -186,6 +185,23 @@
             width: 100%;
         }
 
+        /* Positioning the Subscribe Button */
+        .subscribe-button {
+            position: fixed;
+            top: 50%;
+            left: 0; /* Use `right: 0` for right side */
+            transform: translateY(-50%);
+            z-index: 10;
+            cursor: pointer;
+            width: 80px; /* Set a specific width */
+            height: auto;
+        }
+
+        .subscribe-button img {
+            width: 100%; /* Make sure the image fills the button container */
+            height: auto;
+        }
+
         /* Responsive Styles */
         @media (max-width: 768px) {
             .content {
@@ -210,6 +226,12 @@
             .description-text {
                 font-size: 1rem;
             }
+
+            .subscribe-button {
+                position: fixed;
+                bottom: 20px;
+                left: 0; /* Keep it on the left side */
+            }
         }
     </style>
 </head>
@@ -219,6 +241,11 @@
         Your browser does not support the video tag.
     </video>
     <div class="video-overlay"></div> <!-- Blurry Overlay -->
+    
+    <!-- Subscribe Button Positioned to the Left -->
+    <a href="YOUR_LINK_HERE" class="subscribe-button">
+        <img src="images/subscribe button.png" alt="Subscribe">
+    </a>
     
     <div id="scroll-indicator"></div>
     <div class="title-container" id="title"><b>AMINE KEDDOURI</b></div>

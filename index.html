@@ -62,7 +62,7 @@
             width: 100%;
         }
         .title-container b {
-            font-size: clamp(2rem, 5vw, 3rem); /* Larger font size for PC */
+            font-size: 3rem; /* Default size for PC */
             font-weight: 600;
             color: #fff;
             text-transform: uppercase;
@@ -195,7 +195,7 @@
 
         .description-text {
             color: #fff;
-            font-size: 2rem; /* Default size for larger screens */
+            font-size: 2rem; /* Default size for PC */
             line-height: 1.5;
             padding: 1px;
         }
@@ -218,8 +218,12 @@
             text-align: center;
         }
 
-        /* Responsive Styles */
+        /* Responsive Styles for Mobile Only */
         @media (max-width: 768px) {
+            .title-container b {
+                font-size: 1.8rem; /* Smaller title on mobile */
+            }
+
             .content {
                 flex-direction: column;
                 align-items: center;
@@ -233,10 +237,6 @@
             .circle {
                 width: 70px;
                 height: 70px;
-            }
-
-            .title-container b {
-                font-size: 1.8rem; /* Slightly smaller on phone */
             }
 
             .description-text {
